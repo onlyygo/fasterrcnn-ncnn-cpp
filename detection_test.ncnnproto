@@ -1,0 +1,14 @@
+13 14
+Input            data             0 1 data 512 50 50
+Input            rois             0 1 rois 5 1 1
+ROIPooling       roi_pool5        2 1 data rois pool5 7 7 0.06250000
+InnerProduct     fc6              1 1 pool5 fc6 4096 1 102760448
+ReLU             relu6            1 1 fc6 fc6_relu6 0.000000
+Dropout          drop6            1 1 fc6_relu6 fc6_drop6
+InnerProduct     fc7              1 1 fc6_drop6 fc7 4096 1 16777216
+ReLU             relu7            1 1 fc7 fc7_relu7 0.000000
+Dropout          drop7            1 1 fc7_relu7 fc7_drop7
+Split            splitncnn_0      1 2 fc7_drop7 fc7_drop7_splitncnn_0 fc7_drop7_splitncnn_1
+InnerProduct     cls_score        1 1 fc7_drop7_splitncnn_1 cls_score 2 1 8192
+InnerProduct     bbox_pred        1 1 fc7_drop7_splitncnn_0 bbox_pred 8 1 32768
+Softmax          cls_prob         1 1 cls_score cls_prob

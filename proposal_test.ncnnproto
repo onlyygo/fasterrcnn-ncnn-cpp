@@ -1,0 +1,39 @@
+38 39
+Input            data             0 1 data 3 224 224
+Convolution      conv1_1          1 1 data conv1_1 64 3 1 1 1 1 1728
+ReLU             relu1_1          1 1 conv1_1 conv1_1_relu1_1 0.000000
+Convolution      conv1_2          1 1 conv1_1_relu1_1 conv1_2 64 3 1 1 1 1 36864
+ReLU             relu1_2          1 1 conv1_2 conv1_2_relu1_2 0.000000
+Pooling          pool1            1 1 conv1_2_relu1_2 pool1 0 2 2 0 0
+Convolution      conv2_1          1 1 pool1 conv2_1 128 3 1 1 1 1 73728
+ReLU             relu2_1          1 1 conv2_1 conv2_1_relu2_1 0.000000
+Convolution      conv2_2          1 1 conv2_1_relu2_1 conv2_2 128 3 1 1 1 1 147456
+ReLU             relu2_2          1 1 conv2_2 conv2_2_relu2_2 0.000000
+Pooling          pool2            1 1 conv2_2_relu2_2 pool2 0 2 2 0 0
+Convolution      conv3_1          1 1 pool2 conv3_1 256 3 1 1 1 1 294912
+ReLU             relu3_1          1 1 conv3_1 conv3_1_relu3_1 0.000000
+Convolution      conv3_2          1 1 conv3_1_relu3_1 conv3_2 256 3 1 1 1 1 589824
+ReLU             relu3_2          1 1 conv3_2 conv3_2_relu3_2 0.000000
+Convolution      conv3_3          1 1 conv3_2_relu3_2 conv3_3 256 3 1 1 1 1 589824
+ReLU             relu3_3          1 1 conv3_3 conv3_3_relu3_3 0.000000
+Pooling          pool3            1 1 conv3_3_relu3_3 pool3 0 2 2 0 0
+Convolution      conv4_1          1 1 pool3 conv4_1 512 3 1 1 1 1 1179648
+ReLU             relu4_1          1 1 conv4_1 conv4_1_relu4_1 0.000000
+Convolution      conv4_2          1 1 conv4_1_relu4_1 conv4_2 512 3 1 1 1 1 2359296
+ReLU             relu4_2          1 1 conv4_2 conv4_2_relu4_2 0.000000
+Convolution      conv4_3          1 1 conv4_2_relu4_2 conv4_3 512 3 1 1 1 1 2359296
+ReLU             relu4_3          1 1 conv4_3 conv4_3_relu4_3 0.000000
+Pooling          pool4            1 1 conv4_3_relu4_3 pool4 0 2 2 0 0
+Convolution      conv5_1          1 1 pool4 conv5_1 512 3 1 1 1 1 2359296
+ReLU             relu5_1          1 1 conv5_1 conv5_1_relu5_1 0.000000
+Convolution      conv5_2          1 1 conv5_1_relu5_1 conv5_2 512 3 1 1 1 1 2359296
+ReLU             relu5_2          1 1 conv5_2 conv5_2_relu5_2 0.000000
+Convolution      conv5_3          1 1 conv5_2_relu5_2 conv5_3 512 3 1 1 1 1 2359296
+ReLU             relu5_3          1 1 conv5_3 conv5_3_relu5_3 0.000000
+Convolution      conv_proposal1   1 1 conv5_3_relu5_3 conv_proposal1 512 3 1 1 1 1 2359296
+ReLU             relu_proposal1   1 1 conv_proposal1 conv_proposal1_relu_proposal1 0.000000
+Split            splitncnn_0      1 2 conv_proposal1_relu_proposal1 conv_proposal1_relu_proposal1_splitncnn_0 conv_proposal1_relu_proposal1_splitncnn_1
+Convolution      proposal_cls_score 1 1 conv_proposal1_relu_proposal1_splitncnn_1 proposal_cls_score 18 1 1 1 0 1 9216
+Convolution      proposal_bbox_pred 1 1 conv_proposal1_relu_proposal1_splitncnn_0 proposal_bbox_pred 36 1 1 1 0 1 18432
+Reshape          proposal_cls_score_reshape 1 1 proposal_cls_score proposal_cls_score_reshape 0 -1 2
+Softmax          proposal_cls_prob 1 1 proposal_cls_score_reshape proposal_cls_prob
