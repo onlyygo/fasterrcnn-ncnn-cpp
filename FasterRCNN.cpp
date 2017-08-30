@@ -269,7 +269,7 @@ void FasterRCNN::fast_rcnn_conv_feat_detect() {
     #pragma omp parallel for
     for (int i = 0; i < proposal_num; i++) {
 
-		ncnn:Mat roi_blob(4,1,1);
+		ncnn::Mat roi_blob(4,1,1);
         float* roi_ptr = roi_blob.data;
         roi_ptr[3] = proposal_boxes[i * BOX_DIMS + 3] - proposal_boxes[i * BOX_DIMS + 1];
         roi_ptr[2] = proposal_boxes[i * BOX_DIMS + 2] - proposal_boxes[i * BOX_DIMS + 0];
