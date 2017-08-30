@@ -4,7 +4,7 @@
 #include "ncnn_include/net.h"
 #include "config.h"
 #include "nms.h"
-using ncnn::Mat;
+
 class FasterRCNN {
 public:
 	FasterRCNN();
