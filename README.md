@@ -10,4 +10,6 @@ linux：
 windows：
 将ncnn的源代码都添加进项目里面，并添加上本项目win下的三个文件。编译即可。
 
+PS：使用自己的模型，注意修改Config.h文件中的anchors信息等。生成新的anchors的脚本见于项目rfcn-caffe-cpp。
+
 有问题欢迎邮件咨询：onlyygo@qq.com
