@@ -13,3 +13,6 @@ windows：
 PS：使用自己的模型，注意修改Config.h文件中的anchors信息等。生成新的anchors的脚本见于项目rfcn-caffe-cpp。
 
 有问题欢迎邮件咨询：onlyygo@qq.com
+
+模型可以在这里下载：（model can download here）
+https://drive.google.com/open?id=0B9OXtJAN3-R8UDZIZVRzTU4yU1E
